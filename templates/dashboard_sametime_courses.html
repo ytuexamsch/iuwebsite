@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+<h3>
+   Simultaneous Exams Information
+</h3>
+
+
+
+<hr>
+<p>
+    Welcome, {{request.user.first_name}}
+</p>
+
+
+<a href="/courses/add_sametime_course" class="btn btn-outline-success btn-space">Add Simultaneous Exams</a>
+
+
+<br> <br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <!--<th scope="col">Doktor - id</th>-->
+        <th scope="col">First Exam Name</th>
+        <th scope="col">Second Exam Name</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in info  %}
+          <tr>
+      <!--<th scope="row">{{info.id}}</th>-->
+      <td>{{info.course1_code}}</td>
+      <td>{{info.course2_code}}</td>
+      <td><a href="/courses/update_sametime_course/{{info.id}}" class = "btn btn-outline-success" ><span>Update</span></a></td>
+      <td><a href="/courses/delete_sametime_course/{{info.id}}"class = "btn btn-outline-danger" ><span>Delete</span></a></td>
+
+</tr>
+
+    {% endfor %}
+
+      
+    </tbody>
+  </table>
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

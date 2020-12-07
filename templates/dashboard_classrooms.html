@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+<h3>
+    Classroom Information
+</h3>
+
+
+
+<hr>
+<p>
+    Welcome, {{request.user.first_name}}
+</p>
+
+
+<a href="/classrooms/add_classroom" class="btn btn-outline-success btn-space">Add Classroom</a>   
+
+
+<br> <br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <!--<th scope="col">Doktor - id</th>-->
+        <th scope="col">Classroom Code</th>
+        <th scope="col">Classroom Name</th>
+        <th scope="col">Classroom Capacity</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in info  %}
+      <!--<th scope="row">{{info.id}}</th>-->
+      <td>{{info.classroom_code}}</td>
+      <td>{{info.classroom_name}}</td>
+      <td>{{info.classroom_capacity}}</td>
+      <td><a href="/classrooms/update_classroom/{{info.id}}" class = "btn btn-outline-success" ><span>Update</span></a></td>
+      <td><a href="/classrooms/delete_classroom/{{info.id}}" class = "btn btn-outline-danger" ><span>Delete</span></a></td>
+</tr>
+
+    {% endfor %}
+      <tr>
+      
+    </tbody>
+  </table>
+  <!--a class = "btn btn-outline-primary" href="/doctors/schedule_3"><span>Çizelge Oluştur</span></a-->
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

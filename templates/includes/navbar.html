@@ -1,0 +1,75 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index'  %}">IUSchedule</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index'  %}">Home Page<span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+
+      
+    <ul class="navbar-nav ml-auto">
+    {% if request.user.is_authenticated %}
+    <li class="nav-item active">
+      <a class="nav-link" href="/main_dashboard">Main Dashboard <span class="sr-only">(current)</span></a>
+    </li>
+        <li class="nav-item active">
+      <a class="nav-link" href="/courses/dashboard_courses">Exam Information <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/classrooms/dashboard_classrooms">Classroom Information </a>
+   </li>
+   <li class="nav-item active">
+    <a class="nav-link" href="/courses/dashboard_sametime_courses">Simultaneous Exams Information </a>
+  </li>
+  <li class="nav-item active"> 
+    <a class="nav-link" href="/assistants/dashboard_assistants"> Supervisor Information</a>
+ </li>
+
+ <li class="nav-item active">
+  <a class="nav-link" href="/initial_load">Mass Upload Page</a>
+</li>
+
+    <li class="nav-item active">
+      <a class="nav-link" href="/user/logoutUser">Log out <span class="sr-only">(current)</span></a>
+    </li>
+
+    {% else %}
+    <li class="nav-item active">
+      <a class="nav-link" href="/user/register">Sign up <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/user/loginUser">Login <span class="sr-only">(current)</span></a>
+    </li>
+
+    {% endif %}
+
+
+    </ul>
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+</nav>
+
+
+
+
+
+

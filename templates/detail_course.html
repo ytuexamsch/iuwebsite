@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+
+<div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <h3 class="mt-4">{{course.course_code}}</h3>
+
+      <hr>
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+            <b>Exam Name:  </b>{{course.course_name}}
+            
+          </p>
+          <p class="lead">
+            <b>Exam Capacity:  </b> {{course.course_capacity}}
+            
+          </p>
+         
+      <hr>
+
+
+      </div>
+
+    </div>
+
+        </td>
+      <td><a href="/courses/delete_course/{{course.id}}"class = "btn btn-outline-danger" ><span>Delete</span></a>
+      </td>
+  </div>
+
+{% endblock body %}

@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+<h2>
+    <svg style="margin-top: -7px;" class="bi bi-clipboard-data" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+  <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+</svg>
+     Dashboard
+</h2>
+
+
+
+<hr>
+<p>
+    Welcome, {{request.user.first_name}}
+</p>
+    <div class="row">
+    <div class="col-12">
+          <a class = "btn btn-outline-primary" href="/exam_timetable_results"><span>Start Scheduling</span></a>
+          <a class = "btn btn-outline-primary" href="/initial_load"><span>Add Mass Info</span></a>
+
+    </div>
+    </div>
+
+
+<br>
+    <h4>Info</h4>
+    <hr>
+    <div class="row">
+
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+          <svg class="bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+  <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
+</svg>
+          Exam Table</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+          <svg class="bi bi-aspect-ratio" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+  <path fill-rule="evenodd" d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>
+</svg>
+          Classroom Table</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+          <svg class="bi bi-arrows-angle-contract" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M9.5 2.036a.5.5 0 0 1 .5.5v3.5h3.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+              <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-4.5 4.5a.5.5 0 1 1-.708-.708l4.5-4.5a.5.5 0 0 1 .708 0zm-7.5 7.5a.5.5 0 0 1 0 .708l-4.5 4.5a.5.5 0 0 1-.708-.708l4.5-4.5a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M2.036 9.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V10h-3.5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          Simultaneous Exams Table</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+          <svg class="bi bi-people" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002.002zM7.022 13h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zm7.973.056v-.002.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+</svg>
+          Supervisor Table</a>
+
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Exam Code</th>
+        <th scope="col">Exam Name</th>
+        <th scope="col">Exam Capacity</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in info  %}
+      <!--<th scope="row">{{info.id}}</th>-->
+      <td><a href="/courses/courses/{{info.id}}">{{info.course_code}}</a></td>
+      <td><a href="/courses/courses/{{info.id}}">{{info.course_name}}</a></td>
+      <td>{{info.course_capacity}}</td>
+      <!--td>{{info.sixty_more}}</td-->
+      <!--<td>{{info.slot_number}}</td>-->
+
+
+</tr>
+
+    {% endfor %}
+      <tr>
+
+    </tbody>
+  </table> <a class = "btn btn-outline-primary" href="courses/dashboard_courses"><span>Show All Exams</span></a></div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><table class="table table-hover">
+    <thead>
+      <tr>
+        <!--<th scope="col">Doktor - id</th>-->
+        <th scope="col">Classroom Code</th>
+        <th scope="col">Classroom Name</th>
+        <th scope="col">Classroom Capacity</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for infoc in class_info  %}
+      <!--<th scope="row">{{infoc.id}}</th>-->
+      <td>{{infoc.classroom_code}}</td>
+      <td>{{infoc.classroom_name}}</td>
+      <td>{{infoc.classroom_capacity}}</td>
+
+</tr>
+
+    {% endfor %}
+      <tr>
+
+    </tbody>
+  </table> <a class = "btn btn-outline-primary" href="classrooms/dashboard_classrooms"><span>Show All Classrooms</span></a></div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><table class="table table-hover">
+                <thead>
+                  <tr>
+                    <!--<th scope="col">Doktor - id</th>-->
+                    <th scope="col">First Exam Code</th>
+                    <th scope="col">Second Exam Code</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for s_info in same_time_info  %}
+                  <!--<th scope="row">{{s_info.id}}</th>-->
+                  <td>{{s_info.course1_code}}</td>
+                  <td>{{s_info.course2_code}}</td>
+
+            </tr>
+
+                {% endfor %}
+                  <tr>
+
+                </tbody>
+              </table> <a class = "btn btn-outline-primary" href="courses/dashboard_sametime_courses"><span>Show All Simultaneous Exams</span></a></div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><table class="table table-hover">
+                <thead>
+                  <tr>
+                    <!--<th scope="col">Doktor - id</th>-->
+                    <th scope="col">Supervisor Code</th>
+                    <th scope="col">Seniority</th>
+                    <th scope="col">Unfavorable Days</th>
+                    <th scope="col">Unfavorable Slots</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for a_info in assistant_info  %}
+                  <!--<th scope="row">{{a_info.id}}</th>-->
+                  <td><a href="/assistants/assistants/{{a_info.id}}">{{a_info.assistant_code}}</a></td>
+                  <td>{{a_info.seniority}}</td>
+                  <td>{{a_info.undesired_days}}</td>
+                  <td>{{a_info.undesired_slots}}</td>
+
+            </tr>
+
+                {% endfor %}
+                  <tr>
+
+                </tbody>
+              </table> <a class = "btn btn-outline-primary" href="assistants/dashboard_assistants"><span>Show All Supervisors</span></a></div>
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<hr>
+
+  <!--a class = "btn btn-outline-primary" href="/doctors/schedule_3"><span>Çizelge Oluştur</span></a-->
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

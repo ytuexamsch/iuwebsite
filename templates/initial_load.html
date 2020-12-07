@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<h3>
+  Mass Upload
+</h3>
+
+<br>
+
+<form method="post" action="initial_load" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="validatedCustomFile" name="excel_file" required>
+                <input type="number" class="custom-file-input" id="validatedCustomFile" name="check" value=1 hidden>
+                <label class="custom-file-label" for="validatedCustomFile">Browse File</label>
+                <div>Please Upload the Excel File Required for Scheduling ...</div>
+              </div>
+
+              <button type="submit" class="btn btn-outline-success" style="margin-top: 20px">Upload</button>
+</form>
+
+
+
+
+    {% if content %}
+    {{ content }}
+    {% endif %}
+
+{% endblock body %}

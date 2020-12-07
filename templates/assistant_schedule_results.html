@@ -1,0 +1,98 @@
+{% extends "layout_full.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+<h3>
+    Supervisor Assignment Results
+</h3>
+
+
+
+<hr>
+
+
+
+<table class="table  table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Day/Slot</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+        </tr>
+
+    </thead>
+
+
+
+{% for slot_n in slots %}
+<tr>
+<th>{{ slot_n }}</th>
+
+{% for day_n in days %}
+
+    {% for day,slot,course in model_sonuc %}
+
+        {% if day_n == day and slot_n == slot %}
+
+            <td>
+
+            {% for a in course %}
+            {{ a }}<br>
+
+            {% endfor %}
+
+            </td>
+
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endfor %}
+</tr>
+{% endfor %}
+
+</table>
+
+
+
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

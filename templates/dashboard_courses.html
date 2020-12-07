@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% csrf_token %} 
+<h3>
+    Exam Information
+</h3>
+
+
+
+<hr>
+<p>
+    Welcome, {{request.user.first_name}}
+</p>
+
+
+<a href="/courses/add_course" class="btn btn-outline-success btn-space">Add Exam</a>
+
+
+<br> <br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <!--<th scope="col">Doktor - id</th>-->
+        <th scope="col">Exam Code</th>
+        <th scope="col">Exam Name</th>
+        <th scope="col">Exam Capacity</th>
+        <th scope="col"></th>
+          <th scope="col"></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in info  %}
+      <!--<th scope="row">{{info.id}}</th>-->
+      <td><a href="/courses/courses/{{info.id}}">{{info.course_code}}</a></td>
+      <td><a href="/courses/courses/{{info.id}}">{{info.course_name}}</a></td>
+      <td>{{info.course_capacity}}</td>
+      <!--td>{{info.sixty_more}}</td-->
+      <!--<td>{{info.slot_number}}</td>-->
+          <td><a href="/courses/update_course/{{info.id}}" class = "btn btn-outline-success" ><span>Update</span></a></td>
+          <td><a href="/courses/delete_course/{{info.id}}" class = "btn btn-outline-danger" ><span>Delete</span></a></td>
+      
+
+</tr>
+
+    {% endfor %}
+      <tr>
+      
+    </tbody>
+  </table>
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

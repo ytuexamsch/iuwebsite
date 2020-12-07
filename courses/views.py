@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import pandas as pd
 import numpy as np
+import time
 import pickle
 from assistants.models import Assistants
 from assistants.forms import AssistantsForm
@@ -145,7 +146,7 @@ def delete_sametime_course(request,id):
     sametime_course.delete()
     messages.success(request,"Courses Successfully Deleted")
     return redirect("courses:dashboard_sametime_courses")
-
+ 
 @login_required(login_url="user:loginUser")
 def initial_load(request):
     if request.POST.get('check'):
@@ -255,7 +256,11 @@ def initial_load(request):
 
 
 def exam_schedule(request):
+    if len(Courses.objects.filter(authorized = request.user))==0:
+        messages.error(request,"Please Upload Your Excel File. You can find Demo Excel File on Dashboard Page.")
+        return redirect("index")
 
+    time.sleep(5)
     a_file = open("output_exam.pkl", "rb")
     output = pickle.load(a_file)
 
@@ -303,6 +308,7 @@ def exam_schedule(request):
 
 
 def assistant_schedule(request):
+    time.sleep(5)
 
     a_file = open("output_asistants.pkl", "rb")
     output = pickle.load(a_file)

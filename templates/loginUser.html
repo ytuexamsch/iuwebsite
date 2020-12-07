@@ -9,8 +9,11 @@
         <form method="POST">
             {% csrf_token %}
             {{form|crispy}}
-            <br>
+            
+            <p>If you dont have an account, you can <a href='../../user/register/'>Sing Up.</a></p>
             <button type="submit" class="btn btn-primary">Login</button>
+            
+
         </form>
                
 
